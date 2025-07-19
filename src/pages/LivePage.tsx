@@ -1,5 +1,3 @@
-// src/pages/LivePage.tsx
-
 import { useEffect, useState } from "react";
 import Loader from "../components/Loader";
 import { fetchLiveVideo } from "../services/YoutubeApi";
