@@ -19,7 +19,7 @@ const Sermons = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white py-6 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-r from-yellow-100 via-white to-red-100 py-6 px-4 sm:px-6 lg:px-8 text-gray-800 mb-16">
       <h1 className="text-2xl font-bold mb-6">Archived Sermons</h1>
 
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">

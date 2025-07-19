@@ -27,7 +27,7 @@ const Navbar = () => {
     <>
       {isMobile ? (
         /* Mobile Navbar */
-        <div className="fixed bottom-0 flex justify-around items-center w-screen h-18 rounded-t-2xl px-4 py-2 bg-gray-700 opacity-75 backdrop-blur-md text-gray-300">
+        <div className="fixed bottom-0 flex justify-around items-center w-screen h-18 rounded-t-2xl px-4 py-2 bg-gray-700 text-gray-300">
           {/* Home Icon */}
           <NavLink
             to="/"
@@ -78,6 +78,7 @@ const Navbar = () => {
       ) : (
         /* Desktop Navbar */
         <div className="flex justify-between items-center px-8 py-4 bg-gray-700 text-gray-300">
+          <img src="/winners-logo.png" alt="Winners Chapel Logo" className="w-10" />
           <div className="flex items-center space-x-6">
             <NavLink
               to="/"

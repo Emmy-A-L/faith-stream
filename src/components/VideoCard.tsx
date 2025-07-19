@@ -9,7 +9,7 @@ interface Props {
 const VideoCard = ({ video, onClick }: Props) => {
   return (
     <div
-      className="cursor-pointer hover:shadow-lg transition p-2 rounded-lg"
+      className="cursor-pointer hover:shadow-lg transition p-2 rounded-lg border border-gray-300 bg-gray-100"
       onClick={onClick}
     >
       <img
@@ -20,9 +20,6 @@ const VideoCard = ({ video, onClick }: Props) => {
       <h2 className="text-lg font-semibold mt-2 line-clamp-2">
         {video.snippet.title}
       </h2>
-      <p className="text-sm text-gray-500">
-        {new Date(video.snippet.publishedAt).toLocaleDateString()}
-      </p>
     </div>
   );
 };
