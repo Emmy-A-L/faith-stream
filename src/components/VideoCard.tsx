@@ -1,4 +1,3 @@
-
 import type { YouTubeVideo } from '../types/Youtube';
 
 interface Props {

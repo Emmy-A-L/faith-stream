@@ -1,4 +1,3 @@
-// src/services/youtube.ts
 import axios from 'axios';
 import type { YouTubeVideo } from '../types/Youtube';
 

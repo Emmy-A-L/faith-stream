@@ -1,6 +1,4 @@
-// src/pages/Home.tsx
-
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchArchivedVideos, fetchLiveVideo } from "../services/YoutubeApi";
 import type { YouTubeVideo } from "../types/Youtube";
 import VideoCard from "../components/VideoCard";
