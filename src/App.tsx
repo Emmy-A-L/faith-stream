@@ -10,6 +10,9 @@ import { useMediaQuery } from "./hooks/useMediaQueries";
 import LoginPage from "./pages/LoginPage";
 import LivePage from "./pages/LivePage";
 import SermonPage from "./pages/SermonPage";
+import Header from "./components/Header";
+import SignupPage from "./pages/SignUpPage";
+import NotFound from "./pages/NotFound";
 // import Loader from "./components/Loader";
 
 const App = () => {
@@ -46,12 +49,15 @@ const App = () => {
         </div>
       ) : (
         <>
+          {isMobile ? <Header /> : null}
           <Navbar />
           <Routes>
             {/* Public Routes */}
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<SignupPage />} />
             <Route path="/live" element={<LivePage />} />
+            <Route path="*" element={<NotFound />} />
 
             {/* Protected Routes */}
             <Route

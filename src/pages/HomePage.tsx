@@ -28,7 +28,7 @@ const Home = () => {
           fetchArchivedVideos(),
           fetchLiveVideo(),
         ]);
-        setVideos(archived);
+        setVideos(archived.slice(0, 3)); // limit to the first 3
         if (live) setLiveVideo(live);
       } catch (err) {
         console.error("Failed to load homepage data:", err);
@@ -45,7 +45,7 @@ const Home = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div className="bg-white text-gray-800">
+        <div className="bg-white text-gray-800 mt-18 md:mt-0 mb-14 md:mb-0">
           {/* Hero Section */}
           <section className="bg-gradient-to-r from-yellow-100 via-white to-red-100 py-12 text-center px-4">
             <h1 className="text-3xl sm:text-5xl font-bold mb-4">
@@ -140,10 +140,19 @@ const Home = () => {
           </section>
 
           {/* Footer */}
-          <footer className="bg-[#242424] text-white text-sm py-6 text-center mb-18">
+          <footer className="flex flex-col gap-4 bg-[#242424] text-white text-sm py-10 text-center">
             <p>
-              &copy; {new Date().getFullYear()} Sermon Streaming App. All rights
+              &copy; {new Date().getFullYear()} Faith Stream. All rights
               reserved.
+            </p>
+            <p className="italic">
+              Built with ❤️ by{" "}
+              <Link
+                to="https://lotemmanuel.netlify.app"
+                className="text-blue-400 hover:underline"
+              >
+                Lot Emmanuel
+              </Link>
             </p>
           </footer>
         </div>
