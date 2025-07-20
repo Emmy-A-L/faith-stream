@@ -20,7 +20,7 @@ export const fetchArchivedVideos = async (): Promise<YouTubeVideo[]> => {
         key: API_KEY,
       },
     });
-
+    console.log("Response: ",res)
     if (!res.data || !res.data.items) {
       throw new Error('Invalid response from YouTube API');
     }
