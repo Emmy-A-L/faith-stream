@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {
-  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";
@@ -10,39 +10,39 @@ import { FcGoogle } from "react-icons/fc";
 import { IoMailOutline } from "react-icons/io5";
 import { RiLockPasswordLine } from "react-icons/ri";
 
-const LoginPage = () => {
+const SignupPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleEmailLogin = async (e: React.FormEvent) => {
+  const handleEmailSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     setIsLoading(true);
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      navigate("/");
+      await createUserWithEmailAndPassword(auth, email, password);
+      navigate("/sermons"); //  redirect to archived sermons on successful signup
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to sign in");
+      setError(err instanceof Error ? err.message : "Failed to create account");
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleGoogleLogin = async () => {
+  const handleGoogleSignup = async () => {
     setError("");
     setIsLoading(true);
     const provider = new GoogleAuthProvider();
 
     try {
       await signInWithPopup(auth, provider);
-      navigate("/");
+      navigate("/sermons");
     } catch (err) {
       setError(
-        err instanceof Error ? err.message : "Failed to sign in with Google"
+        err instanceof Error ? err.message : "Failed to sign up with Google"
       );
     } finally {
       setIsLoading(false);
@@ -54,9 +54,9 @@ const LoginPage = () => {
       <div className="max-w-md w-full space-y-8">
         {/* Header */}
         <div className="text-center">
-          <h2 className="mt-6 text-4xl font-bold text-white">Hi There</h2>
+          <h2 className="mt-6 text-4xl font-bold text-white">Welcome 👋</h2>
           <p className="mt-2 text-sm text-gray-400">
-            Sign in to watch live services and past teachings from God's servant
+            Create an account to access archived sermons
           </p>
         </div>
 
@@ -67,8 +67,8 @@ const LoginPage = () => {
           </div>
         )}
 
-        {/* Login Form */}
-        <form onSubmit={handleEmailLogin} className="mt-8 space-y-6">
+        {/* Signup Form */}
+        <form onSubmit={handleEmailSignup} className="mt-8 space-y-6">
           <div className="rounded-md shadow-sm space-y-4">
             {/* Email Input */}
             <div className="relative">
@@ -103,7 +103,7 @@ const LoginPage = () => {
             disabled={isLoading}
             className="group relative w-full flex justify-center py-3 px-4 border border-transparent rounded-lg text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
           >
-            {isLoading ? "Signing in..." : "Sign in"}
+            {isLoading ? "Creating account..." : "Sign up"}
           </button>
         </form>
 
@@ -113,26 +113,24 @@ const LoginPage = () => {
             <div className="w-full border-t border-gray-700"></div>
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-gray-900 text-gray-400">
-              Or continue with
-            </span>
+            <span className="px-2 bg-gray-900 text-gray-400">Or continue with</span>
           </div>
         </div>
 
-        {/* Google Sign In Button */}
+        {/* Google Sign Up Button */}
         <button
-          onClick={handleGoogleLogin}
+          onClick={handleGoogleSignup}
           disabled={isLoading}
           className="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-lg border border-gray-700 bg-gray-800 text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
         >
           <FcGoogle className="text-2xl" />
-          <span>Sign in with Google</span>
+          <span>Sign up with Google</span>
         </button>
 
-      <p>Don't have an account? <Link to="/signup" className="text-blue-500 underline">Sign up</Link>.</p>
+        <p>Already have an account? <Link to="/login" className="text-blue-500 underline">Log in</Link>.</p>
       </div>
     </div>
   );
 };
 
-export default LoginPage;
+export default SignupPage;

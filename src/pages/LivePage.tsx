@@ -25,9 +25,11 @@ const LivePage = () => {
 
   if (!liveVideo) {
     return (
-      <div className="h-screen flex flex-col items-center justify-center text-center px-4">
-        <h2 className="text-2xl font-bold text-gray-200 mb-2">No Live Service Right Now</h2>
+      <div className="h-screen flex flex-col items-center justify-center text-center px-4 gap-6">
+        <div>
+          <h2 className="text-2xl font-bold text-gray-200 mb-2">No Live Service Right Now</h2>
         <p className="text-gray-400">Please check back later for the next live broadcast.</p>
+        </div>
         <div>
           checkout our archived sermons <Link to="/sermons" className="text-blue-500 underline">here</Link>.
         </div>
