@@ -66,12 +66,12 @@ const Navbar = () => {
             </button>
           ) : (
             <NavLink
-              to="/login"
+              to="/signup"
               className={({ isActive }) =>
                 isActive ? "text-red-500" : "text-gray-300 hover:text-red-400"
               }
             >
-              <CiLogin title="Sign In" size={24} />
+              <CiLogin title="Sign Up" size={24} />
             </NavLink>
           )}
         </div>
@@ -125,7 +125,7 @@ const Navbar = () => {
               </button>
             ) : (
               <NavLink
-                to="/login"
+                to="/signup"
                 className={({ isActive }) =>
                   `px-4 py-2 rounded ${
                     isActive
@@ -134,7 +134,7 @@ const Navbar = () => {
                   }`
                 }
               >
-                Sign In
+                Sign Up
               </NavLink>
             )}
           </div>
