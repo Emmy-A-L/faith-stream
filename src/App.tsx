@@ -6,7 +6,7 @@ import WelcomePage from "./pages/WelcomePage";
 import { IoClose } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "./hooks/useMediaQueries";
-// import { ProtectedRoute } from "./components/ProtectedRoute";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 import LoginPage from "./pages/LoginPage";
 import LivePage from "./pages/LivePage";
 import SermonPage from "./pages/SermonPage";
@@ -63,10 +63,10 @@ const App = () => {
             <Route
               path="/sermons"
               element={
-                <SermonPage />
-                // <ProtectedRoute>
-                //   <SermonPage />
-                // </ProtectedRoute>
+                // <SermonPage />
+                <ProtectedRoute>
+                  <SermonPage />
+                </ProtectedRoute>
               }
             />
           </Routes>
