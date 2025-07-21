@@ -54,7 +54,7 @@ const LoginPage = () => {
       <div className="max-w-md w-full space-y-8">
         {/* Header */}
         <div className="text-center">
-          <h2 className="mt-6 text-4xl font-bold text-white">Hi There</h2>
+          <h2 className="mt-6 text-4xl font-bold text-white">Welcome back</h2>
           <p className="mt-2 text-sm text-gray-400">
             Sign in to watch live services and past teachings from God's servant
           </p>
