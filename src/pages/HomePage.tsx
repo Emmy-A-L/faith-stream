@@ -76,11 +76,11 @@ const Home = () => {
           </section>
 
           {/* Live Banner */}
-          <section className="w-full text-center py-4 bg-yellow-50 border-t border-b border-yellow-200">
+          <section className="w-full flex items-center justify-center text-center py-4 bg-yellow-50 border-t border-b border-yellow-200">
             {liveVideo ? (
-              <div className="w-full bg-red-600 text-white p-4 rounded-lg shadow-md mb-6 flex flex-col gap-4 justify-between items-center">
+              <div className="w-9/10 bg-red-600 text-white p-4 rounded-lg shadow-md my-6 flex flex-col gap-4 justify-between items-center">
                 <div className="flex flex-col items-center gap-3 w-full">
-                  <h2 className="w-[90%] text-lg font-semibold truncate">
+                  <h2 className="w-[90%] text-lg font-semibold">
                     🎥 Live Now: {liveVideo.title}
                   </h2>
                   <p className="text-sm text-red-100 truncate w-[90%]">
