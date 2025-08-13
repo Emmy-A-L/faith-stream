@@ -77,9 +77,9 @@ const Navbar = () => {
         </div>
       ) : (
         /* Desktop Navbar */
-        <div className="flex justify-between items-center px-8 py-4 bg-gray-700 text-gray-300 z-50">
+        <div className="fixed top-0 w-full flex justify-between items-center px-8 py-4 bg-gray-700 text-gray-300 z-50">
           <img src="/winners-logo.png" alt="Winners Chapel Logo" className="w-10" />
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-6 text-sm">
             <NavLink
               to="/"
               className={({ isActive }) =>
@@ -89,7 +89,7 @@ const Navbar = () => {
               }
               end
             >
-              <IoHome size={24} />
+              <IoHome size={20} />
               <span>Home</span>
             </NavLink>
             <NavLink
@@ -100,7 +100,7 @@ const Navbar = () => {
                 }`
               }
             >
-              <RiLiveLine size={24} />
+              <RiLiveLine size={20} />
               <span>Live Service</span>
             </NavLink>
             <NavLink
@@ -111,7 +111,7 @@ const Navbar = () => {
                 }`
               }
             >
-              <MdOutlineLiveTv size={24} />
+              <MdOutlineLiveTv size={20} />
               <span>Past Sermons</span>
             </NavLink>
           </div>

@@ -45,13 +45,13 @@ const Home = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div className="bg-white text-gray-800 mt-18 md:mt-0 mb-14 md:mb-0">
+        <div className="bg-white text-gray-800 mt-18 md:mt-18 mb-14 md:mb-0">
           {/* Hero Section */}
           <section className="bg-gradient-to-r from-yellow-100 via-white to-red-100 py-12 text-center px-4">
-            <h1 className="text-3xl sm:text-5xl font-bold mb-4">
+            <h1 className="text-3xl sm:text-5xl font-bold mb-4 font-serif">
               Faith Streams
             </h1>
-            <p className="text-lg sm:text-xl max-w-2xl mx-auto">
+            <p className="text-md sm:text-xl max-w-2xl mx-auto">
               Join us to experience life-transforming messages from Bishop David
               Oyedepo. Watch Live or explore timeless archived sermons.
             </p>
@@ -78,7 +78,7 @@ const Home = () => {
           {/* Live Banner */}
           <section className="w-full flex items-center justify-center text-center py-4 bg-yellow-50 border-t border-b border-yellow-200">
             {liveVideo ? (
-              <div className="w-9/10 bg-red-600 text-white p-4 rounded-lg shadow-md my-6 flex flex-col gap-4 justify-between items-center">
+              <div className="w-9/10 bg-red-500 text-white p-4 rounded-md shadow-md my-6 flex flex-col gap-4 justify-between items-center">
                 <div className="flex flex-col items-center gap-3 w-full">
                   <h2 className="w-[90%] text-lg font-semibold">
                     🎥 Live Now: {liveVideo.title}
@@ -144,15 +144,6 @@ const Home = () => {
             <p>
               &copy; {new Date().getFullYear()} Faith Stream. All rights
               reserved.
-            </p>
-            <p className="italic">
-              Built by{" "}
-              <Link
-                to="https://lotemmanuel.netlify.app"
-                className="text-blue-400 hover:underline"
-              >
-                Lot Emmanuel
-              </Link>
             </p>
           </footer>
         </div>
