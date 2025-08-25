@@ -5,6 +5,7 @@ import VideoCard from "../components/VideoCard";
 import { GoDotFill } from "react-icons/go";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
+import { Helmet } from "@dr.pogodin/react-helmet";
 
 // import { useMediaQuery } from '../hooks/useMediaQueries';
 
@@ -42,16 +43,60 @@ const Home = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Welcome to Faith Streams | Faith Teachings </title>
+        <meta
+          name="description"
+          content="Join Faith Streams for inspiring sermons, and uplifting worship rooted in faith and love."
+        />
+        <meta
+          name="keywords"
+          content="church near me, worship services, online sermons, Christian fellowship, Bible study, Sunday service, gospel messages"
+        />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Welcome to Faith Streams" />
+        <meta
+          property="og:description"
+          content="Experience uplifting worship and inspiring sermons at Faith Streams."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://faith-streams-ruddy.vercel.app"
+        />
+        <meta
+          property="og:image"
+          content="https://faith-streams-ruddy.vercel.app/assets/home-preview.jpg"
+        />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Welcome to Faith Streams" />
+        <meta
+          name="twitter:description"
+          content="Join us for worship, sermons, and a loving community."
+        />
+        <meta
+          name="twitter:image"
+          content="https://faith-streams-ruddy.vercel.app/assets/home-preview.jpg"
+        />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3138057547675144"
+          crossOrigin="anonymous"
+        ></script>
+      </Helmet>
       {loading ? (
         <Loader />
       ) : (
-        <div className="bg-white text-gray-800 mt-18 md:mt-0 mb-14 md:mb-0">
+        <div className="bg-white text-gray-800 mt-18 md:mt-18 mb-14 md:mb-0">
           {/* Hero Section */}
           <section className="bg-gradient-to-r from-yellow-100 via-white to-red-100 py-12 text-center px-4">
-            <h1 className="text-3xl sm:text-5xl font-bold mb-4">
+            <h1 className="text-3xl sm:text-5xl font-bold mb-4 font-serif">
               Faith Streams
             </h1>
-            <p className="text-lg sm:text-xl max-w-2xl mx-auto">
+            <p className="text-md sm:text-xl max-w-2xl mx-auto">
               Join us to experience life-transforming messages from Bishop David
               Oyedepo. Watch Live or explore timeless archived sermons.
             </p>
@@ -70,7 +115,7 @@ const Home = () => {
                 to="/sermons"
                 className="border border-red-600 text-red-600 px-6 py-2 rounded-full hover:bg-red-100"
               >
-                📼 View Sermons
+                View Sermons
               </Link>
             </div>
           </section>
@@ -78,10 +123,10 @@ const Home = () => {
           {/* Live Banner */}
           <section className="w-full flex items-center justify-center text-center py-4 bg-yellow-50 border-t border-b border-yellow-200">
             {liveVideo ? (
-              <div className="w-9/10 bg-red-600 text-white p-4 rounded-lg shadow-md my-6 flex flex-col gap-4 justify-between items-center">
+              <div className="w-9/10 bg-red-500 text-white p-4 rounded-md shadow-md my-6 flex flex-col gap-4 justify-between items-center">
                 <div className="flex flex-col items-center gap-3 w-full">
                   <h2 className="w-[90%] text-lg font-semibold">
-                    🎥 Live Now: {liveVideo.title}
+                    Live Now: {liveVideo.title}
                   </h2>
                   <p className="text-sm text-red-100 truncate w-[90%]">
                     {liveVideo.description}
@@ -102,7 +147,7 @@ const Home = () => {
           {/* Archived Sermons Preview */}
           <section className="py-10 px-4 sm:px-10">
             <h2 className="text-2xl font-bold mb-6 text-center">
-              📼 Latest Sermons
+              Latest Sermons
             </h2>
             <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
               {videos.map((video) => (
@@ -144,15 +189,6 @@ const Home = () => {
             <p>
               &copy; {new Date().getFullYear()} Faith Stream. All rights
               reserved.
-            </p>
-            <p className="italic">
-              Built by{" "}
-              <Link
-                to="https://lotemmanuel.netlify.app"
-                className="text-blue-400 hover:underline"
-              >
-                Lot Emmanuel
-              </Link>
             </p>
           </footer>
         </div>
