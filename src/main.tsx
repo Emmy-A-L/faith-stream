@@ -1,10 +1,13 @@
-import { BrowserRouter } from 'react-router-dom'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import { BrowserRouter } from "react-router-dom";
+import { createRoot } from "react-dom/client";
+import { HelmetProvider } from "@dr.pogodin/react-helmet";
+import "./index.css";
+import App from "./App.tsx";
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
-    <App />
-  </BrowserRouter>,
-)
+    <HelmetProvider>
+      <App />
+    </HelmetProvider>
+  </BrowserRouter>
+);
