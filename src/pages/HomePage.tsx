@@ -81,11 +81,7 @@ const Home = () => {
           name="twitter:image"
           content="https://faith-streams-ruddy.vercel.app/assets/home-preview.jpg"
         />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3138057547675144"
-          crossOrigin="anonymous"
-        ></script>
+        
       </Helmet>
       {loading ? (
         <Loader />
