@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
 import { fetchArchivedVideos, fetchLiveVideo } from "../services/YoutubeApi";
 import type { YouTubeVideo } from "../types/Youtube";
-import VideoCard from "../components/VideoCard";
-import { GoDotFill } from "react-icons/go";
+import { GoDotFill, GoArrowRight } from "react-icons/go";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
 import { Helmet } from "@dr.pogodin/react-helmet";
-
-// import { useMediaQuery } from '../hooks/useMediaQueries';
 
 interface LiveVideoInfo {
   videoId: string;
@@ -20,7 +17,6 @@ const Home = () => {
   const [videos, setVideos] = useState<YouTubeVideo[]>([]);
   const [liveVideo, setLiveVideo] = useState<LiveVideoInfo | null>(null);
   const [loading, setLoading] = useState(true);
-  // const isMobile = useMediaQuery('(max-width: 768px)');
 
   useEffect(() => {
     const loadVideos = async () => {
@@ -49,142 +45,149 @@ const Home = () => {
           name="description"
           content="Join Faith Streams for inspiring sermons, and uplifting worship rooted in faith and love."
         />
-        <meta
-          name="keywords"
-          content="church near me, worship services, online sermons, Christian fellowship, Bible study, Sunday service, gospel messages"
-        />
-
-        {/* Open Graph */}
-        <meta property="og:title" content="Welcome to Faith Streams" />
-        <meta
-          property="og:description"
-          content="Experience uplifting worship and inspiring sermons at Faith Streams."
-        />
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content="https://faith-streams-ruddy.vercel.app"
-        />
-        <meta
-          property="og:image"
-          content="https://faith-streams-ruddy.vercel.app/assets/home-preview.jpg"
-        />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Welcome to Faith Streams" />
-        <meta
-          name="twitter:description"
-          content="Join us for worship, sermons, and a loving community."
-        />
-        <meta
-          name="twitter:image"
-          content="https://faith-streams-ruddy.vercel.app/assets/home-preview.jpg"
-        />
-        
       </Helmet>
+      
       {loading ? (
         <Loader />
       ) : (
-        <div className="bg-white text-gray-800 mt-18 md:mt-18 mb-14 md:mb-0">
+        <div className="bg-gray-50 text-gray-900 font-sans">
+          
           {/* Hero Section */}
-          <section className="bg-gradient-to-r from-yellow-100 via-white to-red-100 py-12 text-center px-4">
-            <h1 className="text-3xl sm:text-5xl font-bold mb-4 font-serif">
-              Faith Streams
-            </h1>
-            <p className="text-md sm:text-xl max-w-2xl mx-auto">
-              Join us to experience life-transforming messages from Bishop David
-              Oyedepo. Watch Live or explore timeless archived sermons.
-            </p>
-            <div className="mt-6 flex justify-center gap-4 flex-wrap">
-              <Link
-                to="/live"
-                className={`flex items-center justify-center gap-2 vertical bg-red-600 text-white px-6 py-2 rounded-full hover:bg-red-700 transition`}
-                aria-disabled={liveVideo ? false : true}
-              >
-                <span>
-                  <GoDotFill className="text-2xl" />
-                </span>{" "}
-                <span>Watch Live</span>
-              </Link>
-              <Link
-                to="/sermons"
-                className="border border-red-600 text-red-600 px-6 py-2 rounded-full hover:bg-red-100"
-              >
-                View Sermons
-              </Link>
-            </div>
-          </section>
-
-          {/* Live Banner */}
-          <section className="w-full flex items-center justify-center text-center py-4 bg-yellow-50 border-t border-b border-yellow-200">
-            {liveVideo ? (
-              <div className="w-9/10 bg-red-500 text-white p-4 rounded-md shadow-md my-6 flex flex-col gap-4 justify-between items-center">
-                <div className="flex flex-col items-center gap-3 w-full">
-                  <h2 className="w-[90%] text-lg font-semibold">
-                    Live Now: {liveVideo.title}
-                  </h2>
-                  <p className="text-sm text-red-100 truncate w-[90%]">
-                    {liveVideo.description}
-                  </p>
-                </div>
+          <section className="relative bg-white overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-50"></div>
+            <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 text-center">
+              <span className="inline-block py-1 px-3 rounded-full bg-red-50 text-red-600 text-sm font-medium mb-6 border border-red-100">
+                Welcome to Faith Streams
+              </span>
+              <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-gray-900 mb-6 font-serif">
+                Experience <span className="text-red-600">Life </span> <br className="hidden md:block" />
+                <span className="text-red-600">Transforming</span> Messages
+              </h1>
+              <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Join us to experience powerful teachings from Bishop David Oyedepo. 
+                Watch live services or explore our library of timeless archived sermons.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link
                   to="/live"
-                  className="bg-white text-red-600 px-4 py-2 rounded-md font-semibold hover:bg-red-100 transition"
+                  className={`group flex items-center gap-2 bg-gray-900 text-white px-8 py-3.5 rounded-full font-medium hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl ${!liveVideo ? 'opacity-75 cursor-not-allowed' : ''}`}
+                  aria-disabled={!liveVideo}
+                  onClick={(e) => !liveVideo && e.preventDefault()}
                 >
-                  Watch Now
+                  {liveVideo ? (
+                    <>
+                      <span className="relative flex h-3 w-3">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                      </span>
+                      <span>Watch Live Now</span>
+                    </>
+                  ) : (
+                    <span>No Live Stream</span>
+                  )}
+                </Link>
+                <Link
+                  to="/sermons"
+                  className="flex items-center gap-2 bg-white text-gray-900 border border-gray-200 px-8 py-3.5 rounded-full font-medium hover:border-gray-300 hover:bg-gray-50 transition-all"
+                >
+                  <span>Browse Library</span>
+                  <GoArrowRight className="text-lg" />
                 </Link>
               </div>
-            ) : (
-              <p className="text-lg text-gray-500 font-black">No Live Stream</p>
-            )}
+            </div>
           </section>
 
-          {/* Archived Sermons Preview */}
-          <section className="py-10 px-4 sm:px-10">
-            <h2 className="text-2xl font-bold mb-6 text-center">
-              Latest Sermons
-            </h2>
-            <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-              {videos.map((video) => (
-                <VideoCard
-                  key={video.id}
-                  video={video}
-                  onClick={() => (window.location.href = `/sermons`)}
-                />
-              ))}
-            </div>
-            <div className="mt-6 text-center">
-              <a
-                href="/sermons"
-                className="text-blue-600 hover:underline text-lg font-medium"
-              >
-                View All Sermons →
-              </a>
+          {/* Live Banner (Conditional) */}
+          {liveVideo && (
+            <section className="max-w-6xl mx-auto px-4 -mt-12 relative z-10 mb-16">
+              <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden flex flex-col md:flex-row">
+                <div className="md:w-1/3 bg-gray-100 relative aspect-video md:aspect-auto">
+                  <img 
+                    src={liveVideo.thumbnail} 
+                    alt={liveVideo.title} 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded uppercase tracking-wider">
+                    Live
+                  </div>
+                </div>
+                <div className="p-6 md:p-8 md:w-2/3 flex flex-col justify-center">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{liveVideo.title}</h3>
+                  <p className="text-gray-600 mb-6 line-clamp-2">{liveVideo.description}</p>
+                  <div>
+                    <Link
+                      to="/live"
+                      className="inline-flex items-center text-red-600 font-semibold hover:text-red-700"
+                    >
+                      Join the Stream <GoArrowRight className="ml-2" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* Latest Sermons */}
+          <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+            <div className="max-w-7xl mx-auto">
+              <div className="flex justify-between items-end mb-12">
+                <div>
+                  <h2 className="text-3xl font-bold text-gray-900 mb-2">Latest Sermons</h2>
+                  <p className="text-gray-500">Catch up on the most recent messages.</p>
+                </div>
+                <Link to="/sermons" className="hidden sm:flex items-center text-gray-600 hover:text-gray-900 font-medium">
+                  View All <GoArrowRight className="ml-2" />
+                </Link>
+              </div>
+              
+              <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                {videos.map((video) => (
+                  <div key={video.id} className="group cursor-pointer" onClick={() => (window.location.href = `/sermons`)}>
+                    <div className="relative aspect-video rounded-xl overflow-hidden mb-4 bg-gray-100 shadow-sm group-hover:shadow-md transition-all">
+                      <img 
+                        src={video.snippet.thumbnails.medium.url} 
+                        alt={video.snippet.title} 
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                        <div className="w-12 h-12 bg-white/90 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-300 shadow-lg">
+                          <GoDotFill className="text-red-600 text-xl" />
+                        </div>
+                      </div>
+                    </div>
+                    <h3 className="font-bold text-lg text-gray-900 leading-tight mb-2 group-hover:text-red-600 transition-colors">
+                      {video.snippet.title}
+                    </h3>
+                    <p className="text-sm text-gray-500 line-clamp-2">{video.snippet.description}</p>
+                  </div>
+                ))}
+              </div>
+              
+              <div className="mt-10 text-center sm:hidden">
+                <Link to="/sermons" className="inline-flex items-center text-gray-600 hover:text-gray-900 font-medium">
+                  View All Sermons <GoArrowRight className="ml-2" />
+                </Link>
+              </div>
             </div>
           </section>
 
           {/* About Section */}
-          <section className="bg-gray-100 py-12 px-4 sm:px-10">
-            <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-2xl font-bold mb-4">
-                About Bishop David Oyedepo
-              </h2>
-              <p className="text-md text-gray-700 leading-relaxed">
-                Bishop David Oyedepo is the founder and presiding Bishop of
-                Living Faith Church Worldwide. His teachings focus on faith,
-                prosperity, and kingdom advancement. This platform is designed
-                to help you stay spiritually connected to the messages that
-                transform lives.
+          <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-50 border-t border-gray-200">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-3xl font-bold text-gray-900 mb-6 font-serif">About Bishop David Oyedepo</h2>
+              <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                Bishop David Oyedepo is the founder and presiding Bishop of Living Faith Church Worldwide. 
+                His teachings focus on faith, prosperity, and kingdom advancement. This platform is designed 
+                to help you stay spiritually connected to the messages that transform lives.
               </p>
             </div>
           </section>
 
           {/* Footer */}
-          <footer className="flex flex-col gap-4 bg-[#242424] text-white text-sm py-10 text-center">
-            <p>
-              &copy; {new Date().getFullYear()} Faith Stream. All rights
-              reserved.
+          <footer className="bg-white border-t border-gray-200 py-12 px-4 text-center">
+            <p className="text-gray-500 text-sm">
+              &copy; 2025 - {new Date().getFullYear()} Faith Stream. All rights reserved.
             </p>
           </footer>
         </div>

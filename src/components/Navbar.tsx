@@ -27,12 +27,12 @@ const Navbar = () => {
     <>
       {isMobile ? (
         /* Mobile Navbar */
-        <div className="fixed bottom-0 flex justify-around items-center w-screen h-18 rounded-t-2xl px-4 py-2 bg-gray-700 text-gray-300 z-50">
+        <div className="fixed bottom-0 flex justify-around items-center w-screen h-18 rounded-t-2xl px-4 py-2 bg-gray-100 glass text-gray-700 z-50">
           {/* Home Icon */}
           <NavLink
             to="/"
             className={({ isActive }) =>
-              isActive ? "text-red-500" : "text-gray-300 hover:text-red-400"
+              isActive ? "text-red-500" : "text-gray-700 hover:text-red-400"
             }
             end
           >
@@ -42,7 +42,7 @@ const Navbar = () => {
           <NavLink
             to="/live"
             className={({ isActive }) =>
-              isActive ? "text-red-500" : "text-gray-300 hover:text-red-400"
+              isActive ? "text-red-500" : "text-gray-700 hover:text-red-400"
             }
           >
             <RiLiveLine title="Live Service" size={24} />
@@ -51,7 +51,7 @@ const Navbar = () => {
           <NavLink
             to="/sermons"
             className={({ isActive }) =>
-              isActive ? "text-red-500" : "text-gray-300 hover:text-red-400"
+              isActive ? "text-red-500" : "text-gray-700 hover:text-red-400"
             }
           >
             <MdOutlineLiveTv title="Past Sermons" size={24} />
@@ -77,14 +77,14 @@ const Navbar = () => {
         </div>
       ) : (
         /* Desktop Navbar */
-        <div className="fixed top-0 w-full flex justify-between items-center px-8 py-4 bg-gray-700 text-gray-300 z-50">
+        <div className="fixed top-0 w-full flex justify-between items-center px-8 py-4 bg-gray-100 glass text-gray-700 z-50">
           <img src="/winners-logo.png" alt="Winners Chapel Logo" className="w-10" />
           <div className="flex items-center space-x-6 text-sm">
             <NavLink
               to="/"
               className={({ isActive }) =>
                 `flex items-center gap-1 ${
-                  isActive ? "text-red-500" : "text-gray-300 hover:text-red-400"
+                  isActive ? "text-red-500" : "text-gray-700 hover:text-red-400"
                 }`
               }
               end
@@ -96,7 +96,7 @@ const Navbar = () => {
               to="/live"
               className={({ isActive }) =>
                 `flex items-center gap-1 ${
-                  isActive ? "text-red-500" : "text-gray-300 hover:text-red-400"
+                  isActive ? "text-red-500" : "text-gray-700 hover:text-red-400"
                 }`
               }
             >
@@ -107,7 +107,7 @@ const Navbar = () => {
               to="/sermons"
               className={({ isActive }) =>
                 `flex items-center gap-1 ${
-                  isActive ? "text-red-500" : "text-gray-300 hover:text-red-400"
+                  isActive ? "text-red-500" : "text-gray-700 hover:text-red-400"
                 }`
               }
             >

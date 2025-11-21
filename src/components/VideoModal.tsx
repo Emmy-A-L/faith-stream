@@ -17,7 +17,7 @@ const VideoModal = ({ videoId, onClose }: Props) => {
           <IoClose className="text-[36px]" />
         </button>
 
-        <div className="aspect-w-16 aspect-h-9 w-full">
+        <div className="aspect-w-16 aspect-h-9">
           <iframe
             src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
             title="YouTube Sermon Player"
