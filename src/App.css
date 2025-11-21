@@ -1,7 +1,19 @@
 
-@import 'tailwindcss';
+
 
 #root {
   margin: 0;
   padding: 0;
+}
+
+
+.satisfy {
+  font-family: "Satisfy", cursive;
+}
+.glass {
+  background: rgba(255, 255, 255, 0.47);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 }
