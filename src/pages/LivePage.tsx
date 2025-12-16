@@ -12,6 +12,7 @@ const LivePage = () => {
     thumbnail: string;
   }>(null);
   const [loading, setLoading] = useState(true);
+  const [isClicked, setIsClicked] = useState(true)
 
   useEffect(() => {
     const getLive = async () => {
@@ -22,10 +23,13 @@ const LivePage = () => {
         console.error("Failed to fetch live video", error);
       } finally {
         setLoading(false);
+        setIsClicked(false)
       }
     };
     getLive();
   }, []);
+
+  
 
   if (loading) return <Loader />;
 
@@ -68,18 +72,18 @@ const LivePage = () => {
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center text-center max-w-lg mx-auto">
-            <div className="w-24 h-24 bg-gray-800 rounded-full flex items-center justify-center mb-8">
-              <div className="w-3 h-3 bg-gray-500 rounded-full"></div>
+            <div className="w-24 h-24 ">
+              <div className="w-3 h-3 "></div>
             </div>
             <h2 className="text-3xl font-bold text-white mb-4">
               No Live Service Currently
             </h2>
-            <p className="text-gray-400 mb-8 text-lg">
-              We are not streaming right now. Check back during our <span className="text-blue-500 cursor-pointer"> scheduled service times</span> or browse our archive.
+            <p className="text-gray-400 mb-4 text-lg">
+              We are not streaming right now. Check back during our <span className="text-blue-500 cursor-pointer" onClick={()=>setIsClicked(!isClicked)}> scheduled service times</span> or browse our archive.
             </p>
-            <div>
-              <h1>Service Schedule</h1>
-              <table bgcolor="red">
+            <div className={`${isClicked ? "" : "hidden"} w-full p-3 border mb-8`}>
+              <h1 className="text-2xl bold uppercase mb-3">Service Schedule</h1>
+              <table cellSpacing={2} className="" border={1}>
                 <th>Days</th>
                 <th>Time</th>
                 <th>Service Title</th>
@@ -90,7 +94,19 @@ const LivePage = () => {
                   <td>Midweek Service</td>
                 </tr>
                 <tr>
-
+                  <td>Sundays</td>
+                  <td>6:00am | 8:10am | 10:20am</td>
+                  <td>Sunday Service</td>
+                </tr>
+                <tr>
+                  <td>Saturdays</td>
+                  <td>7:00am</td>
+                  <td>Leadership Empowerment Summit</td>
+                </tr>
+                <tr>
+                  <td>Mondays to Saturday</td>
+                  <td>5:30am - 6:30am</td>
+                  <td>Covenant Hour Of Prayer</td>
                 </tr>
               </table>
             </div>
